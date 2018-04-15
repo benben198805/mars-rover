@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MarsRover {
+    public static final int MOVE_STEP = 1;
     public static final ArrayList<String> DIRECTIONS =
             new ArrayList<String>() {
                 {
@@ -48,10 +49,11 @@ public class MarsRover {
     }
 
     private void moveForward() {
+
         if (this.direction.equals("N") || this.direction.equals("S")) {
-            this.positionY = this.positionY + 1;
+            this.positionY = this.positionY + MOVE_STEP;
         } else {
-            this.positionX = this.positionX + 1;
+            this.positionX = this.positionX + MOVE_STEP;
         }
     }
 
