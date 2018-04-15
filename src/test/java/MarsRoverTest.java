@@ -10,7 +10,7 @@ public class MarsRoverTest {
 
     @Before
     public void setup(){
-        marsRover = new MarsRover("0 0 N");
+        marsRover = new MarsRover("0 0", "N");
     }
 
     @Test
@@ -29,7 +29,7 @@ public class MarsRoverTest {
 
     @Test
     public void should_return_00S_when_init_different_direction() throws Exception {
-        marsRover = new MarsRover("0 0 S");
+        marsRover = new MarsRover("0 0", "S");
 
         Assert.assertThat(marsRover.getLocationAndDirection(), is("0 0 S"));
     }

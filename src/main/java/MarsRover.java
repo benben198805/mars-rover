@@ -3,10 +3,10 @@ public class MarsRover {
     private String direction;
     private Integer positionY;
 
-    public MarsRover(String initLocationAndDirection) {
-        final String[] inputs = initLocationAndDirection.split(" ");
+    public MarsRover(String initLocation, String initDirection) {
+        final String[] inputs = initLocation.split(" ");
         this.positionY = Integer.valueOf(inputs[1]);
-        this.direction = inputs[2];
+        this.direction = initDirection;
     }
 
     public void exec(String command) {
