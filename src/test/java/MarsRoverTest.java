@@ -26,4 +26,11 @@ public class MarsRoverTest {
 
         Assert.assertThat(marsRover.getLocationAndDirection(), is("0 0 W"));
     }
+
+    @Test
+    public void should_return_00S_when_init_different_direction() throws Exception {
+        marsRover = new MarsRover("0 0 S");
+
+        Assert.assertThat(marsRover.getLocationAndDirection(), is("0 0 S"));
+    }
 }
