@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MarsRover {
     public static final ArrayList<String> DIRECTIONS =
@@ -22,7 +23,16 @@ public class MarsRover {
         this.direction = initDirection;
     }
 
-    public void exec(String commands) {
+    public void exec(String commands) throws Exception {
+        long count = Arrays.stream(commands.split(""))
+                .distinct()
+                .filter(command -> !command.equals("M") && !command.equals("L") && !command.equals("R"))
+                .count();
+
+        if (count > 0) {
+            throw new Exception("Invalid command sequence");
+        }
+
         for (String command : commands.split("")) {
             if (command.equals("L")) {
                 final int index = DIRECTIONS.indexOf(this.direction);

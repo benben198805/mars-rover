@@ -72,4 +72,9 @@ public class MarsRoverTest {
 
         Assert.assertThat(marsRover.getLocationAndDirection(), is("1 2 W"));
     }
+
+    @Test(expected = Exception.class)
+    public void should_return_exception_when_receive_not_available_commands() throws Exception {
+        marsRover.exec("YY");
+    }
 }
