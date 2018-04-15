@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.function.Consumer;
 
 public class MarsRover {
     public static final int MOVE_STEP = 1;
@@ -22,6 +23,13 @@ public class MarsRover {
                 put(Direction.W, new Vector(-1, 0));
             }};
 
+    public static final HashMap<String, Consumer<MarsRover>> COMMAND_ACTIONS =
+            new HashMap<String, Consumer<MarsRover>>() {{
+                put("L", marsRover -> marsRover.turnLeft());
+                put("R", marsRover -> marsRover.turnRight());
+                put("M", marsRover -> marsRover.moveForward());
+            }};
+
     private Position position;
     private Direction direction;
 
@@ -34,13 +42,7 @@ public class MarsRover {
         checkCommands(commands);
 
         for (String command : commands.split("")) {
-            if (command.equals("L")) {
-                turnLeft();
-            } else if (command.equals("R")) {
-                turnRight();
-            } else {
-                moveForward();
-            }
+            COMMAND_ACTIONS.get(command).accept(this);
         }
     }
 
