@@ -18,14 +18,14 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void should_return_00W_when_turn_right() throws Exception {
-        marsRover.exec("R");
+    public void should_return_00W_when_turn_left() throws Exception {
+        marsRover.exec("L");
         assertThat(marsRover.currentLocation(), is("0 0 W"));
     }
 
     @Test
     public void should_return_00E_when_turn_right() throws Exception {
-        marsRover.exec("L");
+        marsRover.exec("R");
         assertThat(marsRover.currentLocation(), is("0 0 E"));
     }
 
@@ -41,5 +41,12 @@ public class MarsRoverTest {
         marsRover = new MarsRover("0 1", "W");
         marsRover.exec("M");
         assertThat(marsRover.currentLocation(), is("1 1 W"));
+    }
+
+    @Test
+    public void should_return_00N_when_turn_left() throws Exception {
+        marsRover = new MarsRover("0 0", "E");
+        marsRover.exec("L");
+        assertThat(marsRover.currentLocation(), is("0 0 N"));
     }
 }
