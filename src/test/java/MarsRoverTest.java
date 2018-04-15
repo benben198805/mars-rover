@@ -58,4 +58,18 @@ public class MarsRoverTest {
 
         Assert.assertThat(marsRover.getLocationAndDirection(), is("0 0 N"));
     }
+
+    @Test
+    public void should_return_11E_when_receive_multiple_commands() throws Exception {
+        marsRover.exec("MRM");
+
+        Assert.assertThat(marsRover.getLocationAndDirection(), is("1 1 E"));
+    }
+
+    @Test
+    public void should_return_11S_when_receive_multiple_commands() throws Exception {
+        marsRover.exec("MRMLML");
+
+        Assert.assertThat(marsRover.getLocationAndDirection(), is("1 2 W"));
+    }
 }
