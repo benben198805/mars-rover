@@ -7,9 +7,9 @@ public class Position {
         this.positionY = positionY;
     }
 
-    public void move(int x, int y) {
-        positionX = positionX + x < 0 ? 0 : positionX + x;
-        positionY = positionY + y < 0 ? 0 : positionY + y;
+    public void move(Vector vector) {
+        positionX = positionX + vector.getX() < 0 ? 0 : positionX + vector.getX();
+        positionY = positionY + vector.getY() < 0 ? 0 : positionY + vector.getY();
     }
 
     @Override

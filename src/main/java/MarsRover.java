@@ -12,6 +12,7 @@ public class MarsRover {
                     add("W");
                 }
             };
+
     private Position position;
     private String direction;
 
@@ -47,16 +48,16 @@ public class MarsRover {
     private void moveForward() {
         switch (direction) {
             case "N":
-                position.move(0, 1);
+                position.move(new Vector(0, 1));
                 break;
             case "S":
-                position.move(0, -1);
+                position.move(new Vector(0, -1));
                 break;
             case "E":
-                position.move(1, 0);
+                position.move(new Vector(1, 0));
                 break;
             case "W":
-                position.move(-1, 0);
+                position.move(new Vector(-1, 0));
                 break;
             default:
                 break;
