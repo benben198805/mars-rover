@@ -49,11 +49,21 @@ public class MarsRover {
     }
 
     private void moveForward() {
-
-        if (direction.equals("N") || direction.equals("S")) {
-            positionY = positionY + MOVE_STEP;
-        } else {
-            positionX = positionX + MOVE_STEP;
+        switch (direction) {
+            case "N":
+                positionY += 1;
+                break;
+            case "S":
+                positionY -= 1;
+                break;
+            case "E":
+                positionX += 1;
+                break;
+            case "W":
+                positionX -= 1;
+                break;
+            default:
+                break;
         }
     }
 

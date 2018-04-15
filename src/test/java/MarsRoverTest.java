@@ -67,6 +67,14 @@ public class MarsRoverTest {
     }
 
     @Test
+    public void should_return_00W_when_receive_multiple_commands() throws Exception {
+        marsRover = new MarsRover("1 1", "E");
+        marsRover.exec("RMRM");
+
+        Assert.assertThat(marsRover.getLocationAndDirection(), is("0 0 W"));
+    }
+
+    @Test
     public void should_return_11S_when_receive_multiple_commands() throws Exception {
         marsRover.exec("MRMLML");
 
