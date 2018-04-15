@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class MarsRover {
     public static final int MOVE_STEP = 1;
@@ -12,6 +13,14 @@ public class MarsRover {
                     add("W");
                 }
             };
+
+    public static final HashMap<String, Vector> ACTIONS =
+            new HashMap<String, Vector>() {{
+                put("N", new Vector(0, 1));
+                put("S", new Vector(0, -1));
+                put("E", new Vector(1, 0));
+                put("W", new Vector(-1, 0));
+            }};
 
     private Position position;
     private String direction;
@@ -46,22 +55,7 @@ public class MarsRover {
     }
 
     private void moveForward() {
-        switch (direction) {
-            case "N":
-                position.move(new Vector(0, 1));
-                break;
-            case "S":
-                position.move(new Vector(0, -1));
-                break;
-            case "E":
-                position.move(new Vector(1, 0));
-                break;
-            case "W":
-                position.move(new Vector(-1, 0));
-                break;
-            default:
-                break;
-        }
+        position.move(ACTIONS.get(direction));
     }
 
     private void checkCommands(String commands) throws Exception {
