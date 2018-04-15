@@ -55,4 +55,11 @@ public class MarsRoverTest {
         marsRover.exec("LM");
         assertThat(marsRover.currentLocation(), is("1 0 W"));
     }
+
+    @Test
+    public void should_return_10W_when_receive_multiple_commands() throws Exception {
+        marsRover = new MarsRover("0 0", "S");
+        marsRover.exec("LMLMRM");
+        assertThat(marsRover.currentLocation(), is("2 1 E"));
+    }
 }
