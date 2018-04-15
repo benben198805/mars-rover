@@ -15,9 +15,8 @@ public class MarsRover {
     private Position position;
     private String direction;
 
-    public MarsRover(String initLocation, String initDirection) {
-        final String[] inputs = initLocation.split(" ");
-        this.position = new Position(Integer.valueOf(inputs[0]), Integer.valueOf(inputs[1]));
+    public MarsRover(Position initPosition, String initDirection) {
+        this.position = initPosition;
         this.direction = initDirection;
     }
 

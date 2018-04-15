@@ -9,8 +9,8 @@ public class MarsRoverTest {
     private MarsRover marsRover;
 
     @Before
-    public void setup(){
-        marsRover = new MarsRover("0 0", "N");
+    public void setup() {
+        marsRover = new MarsRover(new Position(0, 0), "N");
     }
 
     @Test
@@ -29,7 +29,7 @@ public class MarsRoverTest {
 
     @Test
     public void should_return_00S_when_init_different_direction() throws Exception {
-        marsRover = new MarsRover("0 0", "S");
+        marsRover = new MarsRover(new Position(0, 0), "S");
 
         Assert.assertThat(marsRover.getLocationAndDirection(), is("0 0 S"));
     }
@@ -43,7 +43,7 @@ public class MarsRoverTest {
 
     @Test
     public void should_return_21E_when_receive_M_command() throws Exception {
-        marsRover = new MarsRover("1 1", "E");
+        marsRover = new MarsRover(new Position(1, 1), "E");
 
         marsRover.exec("M");
 
@@ -52,7 +52,7 @@ public class MarsRoverTest {
 
     @Test
     public void should_return_00N_when_receive_L_command() throws Exception {
-        marsRover = new MarsRover("0 0", "E");
+        marsRover = new MarsRover(new Position(0, 0), "E");
 
         marsRover.exec("L");
 
@@ -68,7 +68,7 @@ public class MarsRoverTest {
 
     @Test
     public void should_return_00W_when_receive_multiple_commands() throws Exception {
-        marsRover = new MarsRover("1 1", "E");
+        marsRover = new MarsRover(new Position(1, 1), "E");
         marsRover.exec("RMRM");
 
         Assert.assertThat(marsRover.getLocationAndDirection(), is("0 0 W"));
