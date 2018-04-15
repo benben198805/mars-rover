@@ -54,13 +54,13 @@ public class MarsRover {
                 positionY += 1;
                 break;
             case "S":
-                positionY -= 1;
+                positionY = positionY == 0 ? 0 : positionY - 1;
                 break;
             case "E":
                 positionX += 1;
                 break;
             case "W":
-                positionX -= 1;
+                positionX = positionX == 0 ? 0 : positionX - 1;
                 break;
             default:
                 break;
