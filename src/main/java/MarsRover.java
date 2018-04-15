@@ -12,15 +12,12 @@ public class MarsRover {
                     add("W");
                 }
             };
-
-    private Integer positionX;
-    private Integer positionY;
+    private Position position;
     private String direction;
 
     public MarsRover(String initLocation, String initDirection) {
         final String[] inputs = initLocation.split(" ");
-        this.positionX = Integer.valueOf(inputs[0]);
-        this.positionY = Integer.valueOf(inputs[1]);
+        this.position = new Position(Integer.valueOf(inputs[0]), Integer.valueOf(inputs[1]));
         this.direction = initDirection;
     }
 
@@ -51,16 +48,16 @@ public class MarsRover {
     private void moveForward() {
         switch (direction) {
             case "N":
-                positionY += 1;
+                position.move(0, 1);
                 break;
             case "S":
-                positionY = positionY == 0 ? 0 : positionY - 1;
+                position.move(0, -1);
                 break;
             case "E":
-                positionX += 1;
+                position.move(1, 0);
                 break;
             case "W":
-                positionX = positionX == 0 ? 0 : positionX - 1;
+                position.move(-1, 0);
                 break;
             default:
                 break;
@@ -79,6 +76,6 @@ public class MarsRover {
     }
 
     public String getLocationAndDirection() {
-        return positionX + " " + positionY + " " + direction;
+        return position.toString() + " " + direction;
     }
 }
