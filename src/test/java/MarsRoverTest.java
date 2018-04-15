@@ -49,4 +49,10 @@ public class MarsRoverTest {
         marsRover.exec("L");
         assertThat(marsRover.currentLocation(), is("0 0 N"));
     }
+
+    @Test
+    public void should_return_10W_when_forward_and_turn_left() throws Exception {
+        marsRover.exec("LM");
+        assertThat(marsRover.currentLocation(), is("1 0 W"));
+    }
 }

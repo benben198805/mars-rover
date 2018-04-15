@@ -20,21 +20,23 @@ public class MarsRover {
         this.direction = direction;
     }
 
-    public void exec(String command) {
-        if (command.equals("M")) {
-            if (this.direction.equals("N") || this.direction.equals("S")) {
-                this.locationY = this.locationY + 1;
+    public void exec(String commands) {
+        for (String command : commands.split("")) {
+            if (command.equals("M")) {
+                if (this.direction.equals("N") || this.direction.equals("S")) {
+                    this.locationY = this.locationY + 1;
+                } else {
+                    this.locationX = this.locationX + 1;
+                }
             } else {
-                this.locationX = this.locationX + 1;
+                int index = DIRECTIONS.indexOf(this.direction);
+                if (command.equals("L")) {
+                    index = index - 1 <= -1 ? DIRECTIONS.size() - 1 : index - 1;
+                } else {
+                    index = index + 1 >= DIRECTIONS.size() ? 0 : index + 1;
+                }
+                this.direction = DIRECTIONS.get(index);
             }
-        } else {
-            int index = DIRECTIONS.indexOf(this.direction);
-            if (command.equals("L")) {
-                index = index - 1 <= -1 ? DIRECTIONS.size() - 1 : index - 1;
-            } else {
-                index = index + 1 >= DIRECTIONS.size() ? 0 : index + 1;
-            }
-            this.direction = DIRECTIONS.get(index);
         }
     }
 
