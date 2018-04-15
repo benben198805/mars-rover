@@ -4,11 +4,11 @@ public class MarsRover {
     private Integer locationY;
     private String direction;
 
-    public MarsRover(String initLocation) {
+    public MarsRover(String initLocation, String direction) {
         final String[] inputs = initLocation.split(" ");
         this.locationX = Integer.valueOf(inputs[0]);
         this.locationY = Integer.valueOf(inputs[1]);
-        this.direction = inputs[2];
+        this.direction = direction;
     }
 
     public void exec(String command) {
