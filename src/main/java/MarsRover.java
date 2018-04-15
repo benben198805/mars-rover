@@ -39,21 +39,21 @@ public class MarsRover {
     }
 
     private void turnLeft() {
-        final int index = DIRECTIONS.indexOf(this.direction);
-        this.direction = DIRECTIONS.get(index == 0 ? DIRECTIONS.size() - 1 : index - 1);
+        int index = DIRECTIONS.indexOf(direction);
+        direction = DIRECTIONS.get(index == 0 ? DIRECTIONS.size() - 1 : index - 1);
     }
 
     private void turnRight() {
-        final int index = DIRECTIONS.indexOf(this.direction);
-        this.direction = DIRECTIONS.get(index == DIRECTIONS.size() - 1 ? 0 : index + 1);
+        int index = DIRECTIONS.indexOf(direction);
+        direction = DIRECTIONS.get(index == DIRECTIONS.size() - 1 ? 0 : index + 1);
     }
 
     private void moveForward() {
 
-        if (this.direction.equals("N") || this.direction.equals("S")) {
-            this.positionY = this.positionY + MOVE_STEP;
+        if (direction.equals("N") || direction.equals("S")) {
+            positionY = positionY + MOVE_STEP;
         } else {
-            this.positionX = this.positionX + MOVE_STEP;
+            positionX = positionX + MOVE_STEP;
         }
     }
 
@@ -69,6 +69,6 @@ public class MarsRover {
     }
 
     public String getLocationAndDirection() {
-        return this.positionX + " " + this.positionY + " " + this.direction;
+        return positionX + " " + positionY + " " + direction;
     }
 }
