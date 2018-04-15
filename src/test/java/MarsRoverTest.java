@@ -35,4 +35,11 @@ public class MarsRoverTest {
         marsRover.exec("M");
         assertThat(marsRover.currentLocation(), is("0 2 N"));
     }
+
+    @Test
+    public void should_return_11W_when_move_forward() throws Exception {
+        marsRover = new MarsRover("0 1 W");
+        marsRover.exec("M");
+        assertThat(marsRover.currentLocation(), is("1 1 W"));
+    }
 }
