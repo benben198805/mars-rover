@@ -23,11 +23,11 @@ public class MarsRover {
                 put(Direction.W, new Vector(-1, 0));
             }};
 
-    public static final HashMap<String, Consumer<MarsRover>> COMMAND_ACTIONS =
-            new HashMap<String, Consumer<MarsRover>>() {{
-                put("L", marsRover -> marsRover.turnLeft());
-                put("R", marsRover -> marsRover.turnRight());
-                put("M", marsRover -> marsRover.moveForward());
+    public static final HashMap<Character, Consumer<MarsRover>> COMMAND_ACTIONS =
+            new HashMap<Character, Consumer<MarsRover>>() {{
+                put('L', marsRover -> marsRover.turnLeft());
+                put('R', marsRover -> marsRover.turnRight());
+                put('M', marsRover -> marsRover.moveForward());
             }};
 
     private Position position;
@@ -41,7 +41,7 @@ public class MarsRover {
     public void exec(String commands) throws Exception {
         checkCommands(commands);
 
-        for (String command : commands.split("")) {
+        for (Character command : commands.toCharArray()) {
             COMMAND_ACTIONS.get(command).accept(this);
         }
     }
