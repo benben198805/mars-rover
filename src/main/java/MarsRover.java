@@ -1,24 +1,27 @@
 public class MarsRover {
 
     private String location;
+    private String direction;
 
     public MarsRover(String initLocation) {
-        this.location = initLocation;
+        final String[] inputs = initLocation.split(" ");
+        this.location = inputs[0] + " " + inputs[1];
+        this.direction = inputs[2];
     }
 
     public void exec(String command) {
         if (command.equals("M")) {
-            this.location = "0 1 N";
+            this.location = "0 1";
         } else {
             if (command.equals("L")) {
-                this.location = "0 0 E";
+                this.direction = "E";
             } else {
-                this.location = "0 0 W";
+                this.direction = "W";
             }
         }
     }
 
     public String currentLocation() {
-        return this.location;
+        return this.location + " " + this.direction;
     }
 }
