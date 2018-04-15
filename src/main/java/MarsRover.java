@@ -1,20 +1,8 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.function.Consumer;
 
 public class MarsRover {
-    public static final int MOVE_STEP = 1;
-    public static final ArrayList<Direction> DIRECTIONS =
-            new ArrayList<Direction>() {
-                {
-                    add(Direction.N);
-                    add(Direction.E);
-                    add(Direction.S);
-                    add(Direction.W);
-                }
-            };
-
     public static final HashMap<Direction, Vector> ACTIONS =
             new HashMap<Direction, Vector>() {{
                 put(Direction.N, new Vector(0, 1));
