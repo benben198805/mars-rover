@@ -6,7 +6,8 @@ import static org.junit.Assert.assertThat;
 public class MarsRoverTest {
 
     @Test
-    public void hello_world() throws Exception {
-        assertThat(1 + 1, is(2));
+    public void should_return_01N_when_move_forward() throws Exception {
+        final MarsRover marsRover = new MarsRover("0 0 N");
+        assertThat(marsRover.exec("M"), is("0 1 N"));
     }
 }
