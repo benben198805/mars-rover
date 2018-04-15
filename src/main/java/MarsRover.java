@@ -4,30 +4,30 @@ import java.util.HashMap;
 
 public class MarsRover {
     public static final int MOVE_STEP = 1;
-    public static final ArrayList<String> DIRECTIONS =
-            new ArrayList<String>() {
+    public static final ArrayList<Direction> DIRECTIONS =
+            new ArrayList<Direction>() {
                 {
-                    add("N");
-                    add("E");
-                    add("S");
-                    add("W");
+                    add(Direction.N);
+                    add(Direction.E);
+                    add(Direction.S);
+                    add(Direction.W);
                 }
             };
 
-    public static final HashMap<String, Vector> ACTIONS =
-            new HashMap<String, Vector>() {{
-                put("N", new Vector(0, 1));
-                put("S", new Vector(0, -1));
-                put("E", new Vector(1, 0));
-                put("W", new Vector(-1, 0));
+    public static final HashMap<Direction, Vector> ACTIONS =
+            new HashMap<Direction, Vector>() {{
+                put(Direction.N, new Vector(0, 1));
+                put(Direction.S, new Vector(0, -1));
+                put(Direction.E, new Vector(1, 0));
+                put(Direction.W, new Vector(-1, 0));
             }};
 
     private Position position;
-    private String direction;
+    private Direction direction;
 
     public MarsRover(Position initPosition, String initDirection) {
         this.position = initPosition;
-        this.direction = initDirection;
+        this.direction = Direction.valueOf(initDirection);
     }
 
     public void exec(String commands) throws Exception {
@@ -45,13 +45,11 @@ public class MarsRover {
     }
 
     private void turnLeft() {
-        int index = DIRECTIONS.indexOf(direction);
-        direction = DIRECTIONS.get(index == 0 ? DIRECTIONS.size() - 1 : index - 1);
+        direction = this.direction.left();
     }
 
     private void turnRight() {
-        int index = DIRECTIONS.indexOf(direction);
-        direction = DIRECTIONS.get(index == DIRECTIONS.size() - 1 ? 0 : index + 1);
+        direction = this.direction.right();
     }
 
     private void moveForward() {
