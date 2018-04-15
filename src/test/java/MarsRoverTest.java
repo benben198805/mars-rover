@@ -1,12 +1,16 @@
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 
 public class MarsRoverTest {
 
     @Test
-    public void hello_world() throws Exception {
-        assertThat(1 + 1, is(2));
+    public void should_return_00E_when_receive_R_command() throws Exception {
+        MarsRover marsRover = new MarsRover("0 0 N");
+
+        marsRover.exec("R");
+
+        Assert.assertThat(marsRover.getLocationAndDirection(), is("0 0 E"));
     }
 }
