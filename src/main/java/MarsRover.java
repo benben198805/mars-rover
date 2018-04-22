@@ -1,4 +1,14 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class MarsRover {
+
+    List<String> DIRECTIONS = new ArrayList<String>() {{
+        add("N");
+        add("E");
+        add("S");
+        add("W");
+    }};
 
     private int x;
     private int y;
@@ -12,10 +22,14 @@ public class MarsRover {
     }
 
     public void execute(String command) {
-        if (command.equals("R")) {
-            this.direction = "E";
-        } else {
-            this.direction = "S";
+        int index = DIRECTIONS.indexOf(direction);
+        switch (command) {
+            case "R":
+                this.direction = index == DIRECTIONS.size() - 1 ? DIRECTIONS.get(0) : DIRECTIONS.get(index + 1);
+                break;
+            case "L":
+                this.direction = index == 0 ? DIRECTIONS.get(3) : DIRECTIONS.get(index - 1);
+                break;
         }
     }
 
