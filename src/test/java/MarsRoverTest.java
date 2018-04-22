@@ -67,4 +67,13 @@ public class MarsRoverTest {
 
         assertThat(marsRover.getLocationAndDirection(), is("4 4 W"));
     }
+
+    @Test
+    public void should_return_10E_when_receive_another_multiple_commands() {
+        MarsRover marsRover = new MarsRover(0, 0, "N", 5, 5);
+
+        marsRover.execute("LMLMLM");
+
+        assertThat(marsRover.getLocationAndDirection(), is("1 0 E"));
+    }
 }
