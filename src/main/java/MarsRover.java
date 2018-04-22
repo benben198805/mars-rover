@@ -30,36 +30,39 @@ public class MarsRover {
     }
 
     public void execute(String command) {
-        int index = DIRECTIONS.indexOf(direction);
-        switch (command) {
-            case "R":
-                this.direction = index == DIRECTIONS.size() - 1 ? DIRECTIONS.get(0) : DIRECTIONS.get(index + 1);
-                break;
-            case "L":
-                this.direction = index == 0 ? DIRECTIONS.get(3) : DIRECTIONS.get(index - 1);
-                break;
-            case "M":
-                int tempX = this.x;
-                int tempY = this.y;
-                switch (direction) {
-                    case "N":
-                        tempY += 1;
-                        if (0 <= tempY && tempY <= boundaryY) this.y = tempY;
-                        break;
-                    case "E":
-                        tempX += 1;
-                        if (0 <= tempX && tempX <= boundaryX) this.x = tempX;
-                        break;
-                    case "S":
-                        tempY -= 1;
-                        if (0 <= tempY && tempY <= boundaryY) this.y = tempY;
-                        break;
-                    case "W":
-                        tempX -= 1;
-                        if (0 <= tempX && tempX <= boundaryX) this.x = tempX;
-                        break;
-                }
-                break;
+        String[] commands = command.split("");
+        for (String currentCommand : commands) {
+            int index = DIRECTIONS.indexOf(direction);
+            switch (currentCommand) {
+                case "R":
+                    this.direction = index == DIRECTIONS.size() - 1 ? DIRECTIONS.get(0) : DIRECTIONS.get(index + 1);
+                    break;
+                case "L":
+                    this.direction = index == 0 ? DIRECTIONS.get(3) : DIRECTIONS.get(index - 1);
+                    break;
+                case "M":
+                    int tempX = this.x;
+                    int tempY = this.y;
+                    switch (direction) {
+                        case "N":
+                            tempY += 1;
+                            if (0 <= tempY && tempY <= boundaryY) this.y = tempY;
+                            break;
+                        case "E":
+                            tempX += 1;
+                            if (0 <= tempX && tempX <= boundaryX) this.x = tempX;
+                            break;
+                        case "S":
+                            tempY -= 1;
+                            if (0 <= tempY && tempY <= boundaryY) this.y = tempY;
+                            break;
+                        case "W":
+                            tempX -= 1;
+                            if (0 <= tempX && tempX <= boundaryX) this.x = tempX;
+                            break;
+                    }
+                    break;
+            }
         }
     }
 
