@@ -13,12 +13,20 @@ public class MarsRover {
     private int x;
     private int y;
     private String direction;
+    private int boundaryX;
+    private int boundaryY;
 
     public MarsRover(int x, int y, String direction) {
 
         this.x = x;
         this.y = y;
         this.direction = direction;
+    }
+
+    public MarsRover(int x, int y, String direction, int boundaryX, int boundaryY) {
+        this(x, y, direction);
+        this.boundaryX = boundaryX;
+        this.boundaryY = boundaryY;
     }
 
     public void execute(String command) {
@@ -31,18 +39,21 @@ public class MarsRover {
                 this.direction = index == 0 ? DIRECTIONS.get(3) : DIRECTIONS.get(index - 1);
                 break;
             case "M":
+                int tempX = this.x;
                 switch (direction) {
                     case "N":
                         this.y += 1;
                         break;
                     case "E":
-                        this.x += 1;
+                        tempX += 1;
+                        if (0 <= tempX && tempX <= boundaryX) this.x = tempX;
                         break;
                     case "S":
                         this.y -= 1;
                         break;
                     case "W":
-                        this.x -= 1;
+                        tempX -= 1;
+                        if (0 <= tempX && tempX <= boundaryX) this.x = tempX;
                         break;
                 }
                 break;
