@@ -13,8 +13,8 @@ public class MarsRover {
     private int x;
     private int y;
     private String direction;
-    private int boundaryX;
-    private int boundaryY;
+    private int boundaryX = Integer.MAX_VALUE;
+    private int boundaryY = Integer.MAX_VALUE;
 
     public MarsRover(int x, int y, String direction) {
 
@@ -40,16 +40,19 @@ public class MarsRover {
                 break;
             case "M":
                 int tempX = this.x;
+                int tempY = this.y;
                 switch (direction) {
                     case "N":
-                        this.y += 1;
+                        tempY += 1;
+                        if (0 <= tempY && tempY <= boundaryY) this.y = tempY;
                         break;
                     case "E":
                         tempX += 1;
                         if (0 <= tempX && tempX <= boundaryX) this.x = tempX;
                         break;
                     case "S":
-                        this.y -= 1;
+                        tempY -= 1;
+                        if (0 <= tempY && tempY <= boundaryY) this.y = tempY;
                         break;
                     case "W":
                         tempX -= 1;
