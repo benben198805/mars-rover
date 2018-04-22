@@ -31,10 +31,19 @@ public class MarsRover {
                 this.direction = index == 0 ? DIRECTIONS.get(3) : DIRECTIONS.get(index - 1);
                 break;
             case "M":
-                if (direction.equals("N")) {
-                    this.y += 1;
-                } else if (direction.equals("W")) {
-                    this.x -= 1;
+                switch (direction) {
+                    case "N":
+                        this.y += 1;
+                        break;
+                    case "E":
+                        this.x += 1;
+                        break;
+                    case "S":
+                        this.y -= 1;
+                        break;
+                    case "W":
+                        this.x -= 1;
+                        break;
                 }
                 break;
         }
