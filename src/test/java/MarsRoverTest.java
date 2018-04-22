@@ -22,4 +22,13 @@ public class MarsRoverTest {
 
         assertThat(marsRover.getLocationAndDirection(), is("0 0 S"));
     }
+
+    @Test
+    public void should_return_01N_when_receive_a_move_command() {
+        MarsRover marsRover = new MarsRover(0, 0, "N");
+
+        marsRover.execute("M");
+
+        assertThat(marsRover.getLocationAndDirection(), is("0 1 N"));
+    }
 }
